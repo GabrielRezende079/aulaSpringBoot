@@ -1,4 +1,4 @@
-package com.GabrielRezende079.repo01.MathControllers;
+package com.GabrielRezende079.repo01.controllers.MathControllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
