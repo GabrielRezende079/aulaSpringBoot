@@ -4,10 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
+// Model class for Person 
+// It implements Serializable to allow the conversion of an object into a byte stream
+// This is useful for saving the object to a file or sending it over a network
 
 public class Person implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    // Attributes
     private Long id;
     private String FirstName;
     private String LastName;
@@ -63,6 +67,7 @@ public class Person implements Serializable {
         this.Gender = gender;
     } 
 
+    // Override methods for equality check and hash code generation
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Person person)) return false;
