@@ -3,11 +3,13 @@ package com.GabrielRezende079.repo01.controllers;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.http.MediaType;
-import com.GabrielRezende079.repo01.PersonServices;
+
+import com.GabrielRezende079.repo01.Services.PersonServices;
 import com.GabrielRezende079.repo01.model.Person;
 
 
@@ -23,6 +25,7 @@ public class PersonController {
 
 
     // http://localhost:8080/person
+    // API to get all persons GET
     @RequestMapping(  
     method = RequestMethod.GET, 
     produces = MediaType.APPLICATION_JSON_VALUE) 
@@ -33,12 +36,51 @@ public class PersonController {
 
 
     // http://localhost:8080/person/{id}
+    // API to get person by id GET
     @RequestMapping( value = "/{id}", 
-    method = RequestMethod.GET, 
+    method = RequestMethod.GET,
     produces = MediaType.APPLICATION_JSON_VALUE) 
+    // Get person by id
     public Person findById(@PathVariable("id")String id){
         return sevices.findById(id);
     }
+
+
+    // API to create person POST
+    @RequestMapping(
+    method = RequestMethod.POST, 
+    produces = MediaType.APPLICATION_JSON_VALUE) 
+    // Get person by id
+    public Person createPerson(@RequestBody Person person){
+        return sevices.createPerson(person);
+    }
+    /*  Example of JSON to create a person
     
+    {
+    "firstName" : "Gabriel",
+    "lastName" :"Rezende",
+    "address":"Brazil",
+    "gender" : "Male"
+    }
+
+     */
+
+
+    // API to update person PUT
+    @RequestMapping(
+    method = RequestMethod.PUT, 
+    produces = MediaType.APPLICATION_JSON_VALUE) 
+    // Get person by id
+    public Person updatingPerson(@RequestBody Person person){
+        return sevices.updatingPerson(person);
+    }
+
+    // API to delete person DELETE
+    @RequestMapping( value = "/{id}", 
+    method = RequestMethod.DELETE) 
+    // Get person by id
+    public void DeletingPerson(@PathVariable("id")String id){
+        sevices.DeletingPerson(id);
+    }
 
 }
